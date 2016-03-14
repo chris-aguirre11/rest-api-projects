@@ -1,7 +1,7 @@
 # Travel Prints REST API Project
 
 # Technologies Used
-J2EE, Jersey, Jackson, Hibernate, mySQL
+J2EE, Jersey, Jackson, Hibernate, mySQL, Fiddler (for testing)
 
 # What Has Been Implemented
 GET 	/travelprints/state/{state}/cities	<br/>
