@@ -11,6 +11,7 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Response;
 
+import travelprints.api.utils.ApiUtils;
 import travelprints.persistence.dao.UserVisitsDao;
 import travelprints.persistence.objects.UserVisits;
 
@@ -43,14 +44,24 @@ public class UserResource {
 		return Response.status(201).entity("Success").build();
 	}
 	
-	
-	
-	
 	@GET
 	@Path("/{user}/visits")
 	@Produces("application/json")	
 	public List<String> getCitiesUserHasVisited(@PathParam("user") String user) {
         return UserVisitsDao.retrieveCitiesUserHasVisited(user);
+    }
+	
+	/**
+	 * Intended Goal: To provide an XML file format so users of this API can use to call 
+	 *    the Google Maps API and easily plot all points latitude/longitude.
+	 * 	
+	 * Reference: https://developers.google.com/maps/articles/phpsqlajax_v3#checking-that-xml-output-works
+	 */
+	@GET
+	@Path("/{user}/visits/markers")
+	@Produces("application/text")	
+	public String generateGoogleMapMarkersXML(@PathParam("user") String user) {
+        return ApiUtils.generateGoogleMapMarkersXML(user);
     }
 	
 	@GET

@@ -2,6 +2,7 @@ package travelprints.persistence.dao;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.hibernate.Criteria;
 import org.hibernate.Session;
@@ -9,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+
 
 
 import travelprints.persistence.objects.City;
@@ -105,6 +107,25 @@ public class UserVisitsDao {
 		session.close();  
 		
 		return userVisitedCities;
+	}
+	
+	public static List<City> retrieveCityMapMarkersUserHasVisited(String userName) { 
+		parseUserNameInputString(userName);
+		
+		List<String> cities = retrieveCitiesUserHasVisited(userName);
+		
+		Session session = new Configuration().configure().buildSessionFactory().openSession();  
+		Transaction t = session.beginTransaction();  
+		t.begin();  
+		
+		Criteria criteria = session.createCriteria(City.class);
+		criteria.add(Restrictions.in("cityName", cities));
+		List<City> userVisitedMapMarkers = criteria.list();
+		
+		t.commit();  
+		session.close();  
+		
+		return userVisitedMapMarkers;
 	}
 	
 	public static List<String> retrieveStatesUserHasVisited(String userName) { 
