@@ -5,11 +5,15 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.exception.ConstraintViolationException;
 
-import travelprints.persistence.objects.State;
+import travelprints.persistence.objects.User;
 
-public class StateDao {
+public class UserDao {
 	
-	public static void addNewState(String stateName, String countryName) {
+	public static void main(String[] args) {
+		UserDao.addNewUser("Chris", " ", "Aguirre");
+	}
+	
+	public static void addNewUser(String firstName, String middleInitial, String lastName) {
 		Session session = null;
 		Transaction t = null;
 		try {
@@ -17,13 +21,17 @@ public class StateDao {
 			t = session.beginTransaction();  
 			t.begin();
 			
-			State newState = new State();
-			newState.setStateName(stateName);
-			newState.setCountryName(countryName);
-			session.saveOrUpdate(newState);
+			User newUser = new User();
+			newUser.setFirstName(firstName);
+			newUser.setMiddleInitial(middleInitial);
+			newUser.setLastName(lastName);
+			session.saveOrUpdate(newUser);
 		} 
 		catch (ConstraintViolationException e) {
 			// TODO: What to do in this case - how to notify user?
+		}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 		finally {
 			t.commit();  

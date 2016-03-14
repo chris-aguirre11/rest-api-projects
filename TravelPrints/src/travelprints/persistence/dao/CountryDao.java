@@ -9,6 +9,10 @@ import travelprints.persistence.objects.Country;
 
 public class CountryDao {
 	
+	public static void main(String[] args) {
+		CountryDao.addNewCountry("Ireland");
+	}
+	
 	public static void addNewCountry(String countryName) {
 		Session session = null;
 		Transaction t = null;
@@ -19,10 +23,13 @@ public class CountryDao {
 			
 			Country newCountry = new Country();
 			newCountry.setCountryName(countryName);
-			session.save(newCountry);
+			session.saveOrUpdate(newCountry);
+			
 		} 
-		catch (ConstraintViolationException e) {
+		catch (Exception e) {
 			// TODO: What to do in this case - how to notify user?
+			t.rollback();
+			session.close();
 		}
 		finally {
 			t.commit();  

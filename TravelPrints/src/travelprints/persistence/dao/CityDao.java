@@ -51,7 +51,7 @@ public class CityDao {
 			newCity.setLatitude(randomLatitudeValue.toString());
 			newCity.setLongitude(randomLongitudeValue.toString());
 			
-			session.save(newCity);
+			session.saveOrUpdate(newCity);
 		} 
 		catch (ConstraintViolationException e) {
 			// TODO: What to do in this case - how to notify user?

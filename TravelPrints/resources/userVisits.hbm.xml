@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>  
+<!DOCTYPE hibernate-mapping PUBLIC  
+ "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
+ "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
+  
+ <hibernate-mapping>  
+	 <class name="travelprints.persistence.objects.UserVisits" table="User_Visits">
+
+		 <composite-id>
+		 	<key-property name="firstName" column="first_name"/>
+		 	<key-property name="lastName" column="last_name"/>
+			<key-property name="cityName" column="city_name"  length="45"/>
+			<key-property name="stateName" column="state_name"  length="45"/>
+		 </composite-id>
+		 
+		 <property name="countryName" column="country_name"></property> 
+		 <property name="dateVisited" column="date_visited"></property> 
+		 <property name="numberOfDays" column="number_of_days"></property> 
+		 <property name="middleInitial" column="middle_initial" length="1"></property> 
+	 </class>  
+         
+ </hibernate-mapping> 
