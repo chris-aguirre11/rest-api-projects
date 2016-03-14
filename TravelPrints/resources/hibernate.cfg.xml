@@ -25,6 +25,8 @@
 
       <!-- Mapping files -->
  	  <mapping resource="city.hbm.xml"/>
+ 	  <mapping resource="country.hbm.xml"/>
+ 	  <mapping resource="state.hbm.xml"/>
  	  
  	  
  	  
