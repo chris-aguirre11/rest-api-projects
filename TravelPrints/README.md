@@ -4,12 +4,12 @@
 J2EE, Jersey, Jackson, Hibernate, mySQL
 
 # What Has Been Implemented
-GET 	/travelprints/state/{state}/cities
-POST 	/travelprints/user/{user}/visits
-DEL 	/travelprints/user/{user}/visit/{visit}
-GET 	/travelprints/user/{user}/visits
-GET 	/travelprints/user/{user}/visits/states
-GET		/travelprints/user/{user}/visits/markers
+GET 	/travelprints/state/{state}/cities	<br/>
+POST 	/travelprints/user/{user}/visits	<br/>
+DEL 	/travelprints/user/{user}/visit/{visit}	<br/>
+GET 	/travelprints/user/{user}/visits	<br/>
+GET 	/travelprints/user/{user}/visits/states	<br/>
+GET		/travelprints/user/{user}/visits/markers	<br/>
 	Note: 
 		1) Provides an XML file so users of this API can use to call 
 		   the Google Maps API and easily plot all points latitude/longitude)
